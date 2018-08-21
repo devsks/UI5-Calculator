@@ -58,7 +58,7 @@
 							<Button text="0" press="editInput(0)"></Button>
 						</VBox>
 						<VBox>
-							<Button text="=" press="validCompute()"></Button>
+							<Button text="=" press="validCompute"></Button>
 						</VBox>
 						<VBox>
 							<Button text="+" press="editInput('+')"></Button>
