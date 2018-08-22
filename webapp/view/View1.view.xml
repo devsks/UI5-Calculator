@@ -4,7 +4,8 @@
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-					<Text text="Calculator"></Text>
+					<VBox alignItems="Center">
+					<Text text="Under Developement"></Text>
 					<HBox>
 						<Input value="{inputModel>/expression/}" width="100%"></Input>
 					</HBox>
@@ -69,6 +70,7 @@
 							<Button text = "Clear" press="clearInput"></Button>
 						</VBox>
 					</HBox>
+					</VBox>
 				</content>
 			</Page>
 		</pages>

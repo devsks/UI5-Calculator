@@ -28,13 +28,15 @@ sap.ui.define([
 		validCompute: function () {
 			var expression = this.getView().getModel("inputModel").getProperty("/expression");
 			var expList = expression.split(" ");
-			if (isValid(expList) == true) {
+			if (isValid(expList) == true && expList.length) {
 				var postFix = changeToPostfix(expList);
 				var result = evaluatePostFix(postFix);
-				this.getView().getModel("inputModel").setProperty("/expression", result);
-			} else {
-				alert("Invalid Expression. Please Correct Manually");
+				if (result != null) {
+					this.getView().getModel("inputModel").setProperty("/expression", result);
+					return;
+				}
 			}
+			alert("Incomplete or Invalid Expression. Please review the expression.");
 
 		}
 
@@ -90,8 +92,10 @@ var evaluatePostFix = function (postFix) {
 		if ("+-/*".indexOf(elements) == -1) {
 			stack.push(parseFloat(elements));
 		} else {
-
+			if (stack.length < 2)
+				return null;
 			var a = stack.pop(); //2nd Operand
+
 			var b = stack.pop(); //1st Operand        
 			stack.push(performOperation(b, a, elements));
 		}
